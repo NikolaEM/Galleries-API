@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\GalleryController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -32,4 +33,6 @@ Route::post('/galleries', [GalleryController::class, 'store'])->middleware('auth
 Route::put('/galleries/{id}', [GalleryController::class, 'update'])->middleware('auth');
 Route::delete('/galleries/{id}', [GalleryController::class, 'delete'])->middleware('auth');
 
+Route::post('/galleries/{id}/comments', [CommentController::class, 'store'])->middleware('auth');
+Route::delete('/comments/{id}', [CommentController::class, 'delete'])->middleware('auth');
 
