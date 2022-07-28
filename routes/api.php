@@ -36,3 +36,4 @@ Route::delete('/galleries/{id}', [GalleryController::class, 'delete'])->middlewa
 Route::post('/galleries/{id}/comments', [CommentController::class, 'store'])->middleware('auth');
 Route::delete('/comments/{id}', [CommentController::class, 'delete'])->middleware('auth');
 
+

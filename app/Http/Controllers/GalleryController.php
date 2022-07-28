@@ -19,8 +19,9 @@ class GalleryController extends Controller
         return response()->json($galleries);
     }
 
-    public function show(Gallery $gallery){
+    public function show($id){
 
+        $gallery = Gallery::with(['images', 'user', 'comments', 'comments.user'])->find($id);
         return response()->json($gallery);
     }
 
@@ -39,7 +40,7 @@ class GalleryController extends Controller
         foreach($data['images'] as $image) {
             $imagesArr[] = Image::create([
                 'gallery_id' => $gallery->id,
-                'url' => $image
+                'url' => $image['url']
             ]);
         }
         $gallery->load('images', 'user', 'comments', 'comments.user');

@@ -27,7 +27,7 @@ class CreateGalleryRequest extends FormRequest
             'title' => 'required|string|min:2|max:255',
             'description' => 'nullable|string|max:1000',
             'images' => 'array|min:1',
-            'images.*' => 'required|url|ends_with:jpeg,png,jpg'
+            'images.*.url' => 'required|url|ends_with:jpeg,png,jpg'
         ];
     }
 }
