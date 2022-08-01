@@ -52,12 +52,13 @@ class GalleryController extends Controller
         $data = $request->validated();
         $gallery = Gallery::findOrFail($id);
         $gallery->update($data);
+        $gallery->images()->delete();
 
         $imagesArr = [];
         foreach($request['images'] as $image) {
             $imagesArr[] = Image::create([
                 'gallery_id' => $gallery->id,
-                'url' => $image
+                'url' => $image['url']
             ]);
         }
         
